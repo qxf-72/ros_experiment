@@ -1,0 +1,20 @@
+<launch>
+
+    <!-- bag的地址与名称 -->
+    <arg name="bag_filename" default="/home/school/ros_ws/external/data.bag"/>
+
+    <!-- 使用bag的时间戳 -->
+    <param name="use_sim_time" value="true" />
+
+    <!-- 启动节点 -->
+    <node name="question2_feature_detection_node" pkg="question_2" type="feature_detection" output="screen" />
+    
+    <!-- launch rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" required="false"
+        args="-d $(find question_2)/launch/feature.rviz" />
+
+    <!-- play bagfile -->
+    <node name="playbag" pkg="rosbag" type="play"
+        args="--clock $(arg bag_filename)" />
+
+</launch>

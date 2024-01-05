@@ -1,0 +1,6 @@
+.vscode
+CMakeLists.txt
+build
+build_isolated
+devel
+devel_isolated
